@@ -1,0 +1,5 @@
+.idea/
+*.iml
+framework-st-rest/target/
+framework-st-service/target/
+framework-st-core/target/

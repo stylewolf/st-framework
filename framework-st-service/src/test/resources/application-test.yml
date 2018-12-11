@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.16.10.240:3306/comm_plat
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: ylsk
+    ## For more details please see DataSourceProperties.
+    hikari:
+      maxPoolSize: 5
+  jpa:
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+logging:
+  register-shutdown-hook: true

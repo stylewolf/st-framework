@@ -1,0 +1,16 @@
+ffmpeg -i rtsp://172.16.10.245:554/1131 -vcodec copy -f rtsp -rtsp_transport tcp rtsp://172.16.10.245:555/1131
+
+username:password@
+ ffmpeg -i rtsp://admin:yulian2016@192.168.60.43/1_1 -vcodec copy -f rtsp -rtsp_transport tcp rtsp://172.16.10.245:555/43
+ ffmpeg -i rtsp://admin:yulian2016@192.168.60.20/1_1 -vcodec copy -f rtsp -rtsp_transport tcp rtsp://172.16.10.245:555/20
+ ffmpeg -i rtsp://admin:yulian2016@192.168.60.46/1_1 -vcodec copy -f rtsp -rtsp_transport tcp rtsp://172.16.10.245:555/46
+
+192.168.60.23 admin:yulian2016 Streaming/Channels/101
+
+192.168.60.27 admin:yulian2016 Streaming/Channels/101
+
+192.168.60.40 admin:yulian2016 Streaming/Channels/101
+
+
+
+192.168.60.90 admin:admin stream5
