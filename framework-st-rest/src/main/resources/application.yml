@@ -16,4 +16,10 @@ spring:
         enable_lazy_load_no_trans: true
 logging:
   register-shutdown-hook: true
+exception:
+  message:
+    200: 成功
+    404: 未找到请求数据
+    500: 系统内部异常
+
 
