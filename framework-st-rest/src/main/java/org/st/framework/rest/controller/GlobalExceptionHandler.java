@@ -5,8 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.st.framework.core.exception.CoreException;
 import org.st.framework.core.exception.ExceptionCode;
+import org.st.framework.core.exception.NotFoundException;
 import org.st.framework.core.utils.SimpleData;
+import org.st.framework.rest.exception.PasswordIncorrectException;
 import org.st.framework.rest.exception.UserNotFoundException;
 import org.st.framework.utils.FailureData;
 
@@ -25,13 +28,13 @@ public class GlobalExceptionHandler{
     @Resource
     HttpServletResponse response;
 
-    @ExceptionHandler(UserNotFoundException.class)
-    SimpleData<String> handleUserNotFoundException(UserNotFoundException e){
+    @ExceptionHandler({PasswordIncorrectException.class,UserNotFoundException.class,NotFoundException.class})
+    SimpleData<String> handleUserException(CoreException e){
         FailureData<String> rs = new FailureData<String>();
         rs.setMessage(e.getMessage());
-        rs.setCode(ExceptionCode.SYSTEM_USER_NOTFOUND);
-        //rs.setData(e);
-        response.setStatus(ExceptionCode.SYSTEM_USER_NOTFOUND);
+        rs.setCode(e.getCode());
+        rs.setData(e.getClass().getSimpleName());
+        response.setStatus(e.getCode());
         return rs;
     }
 
@@ -44,7 +47,7 @@ public class GlobalExceptionHandler{
     SimpleData<String> handleException(Exception e){
         FailureData<String> rs = new FailureData<String>();
         rs.setMessage("系统内部异常！");
-        //rs.setData(e);
+        rs.setData(e.getClass().getSimpleName());
         rs.setCode(ExceptionCode.SERVER_FETAL);
         response.setStatus(ExceptionCode.SERVER_FETAL);
         return rs;

@@ -5,6 +5,16 @@ package org.st.framework.core.exception;
  */
 public class CoreException extends RuntimeException {
 
+    private int code = 500;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public CoreException(String message) {
         super(message);
     }
@@ -16,4 +26,6 @@ public class CoreException extends RuntimeException {
     public CoreException(Throwable cause) {
         super(cause);
     }
+
+
 }

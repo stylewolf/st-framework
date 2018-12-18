@@ -8,6 +8,8 @@ public interface IUserService {
 
     SUser findById(String id);
 
+    SUser findByLoginId(String loginId);
+
     void save(SUser user);
 
     void update(SUser user);

@@ -14,8 +14,20 @@ spring:
     properties:
       hibernate:
         enable_lazy_load_no_trans: true
+
 logging:
   register-shutdown-hook: true
+  level:
+    #org.springframework: info
+    com.hazelcast: debug
+
+
+#程序使用设置 none md5 des aes none表示不使用加密算法
+app:
+  encryption: md5
+  hazelcast:
+    url: http://localhost:8200/hazelcast-mancenter
+    enable: true
 exception:
   message:
     200: 成功

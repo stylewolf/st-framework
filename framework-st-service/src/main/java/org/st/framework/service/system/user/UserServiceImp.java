@@ -34,6 +34,12 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
+    public SUser findByLoginId(String loginId) {
+        Optional<SUser> user = userRepository.findByLoginId(loginId);
+        return user.orElse(null);
+    }
+
+    @Override
     public void save(SUser user) {
 
     }
