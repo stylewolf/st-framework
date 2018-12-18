@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.session.hazelcast.HazelcastSessionRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,7 @@ public class UserController extends BaseController {
     private String encryption;
 
     @RequestMapping("/info/{userId}")
+
     public SimpleData<SUserVo> info(@PathVariable("userId") String userId){
         SUser user = userServiceImp.findById(userId);
         if(user == null){
@@ -36,6 +38,8 @@ public class UserController extends BaseController {
         SUserVo userVo = new SUserVo();
         BeanUtils.copyProperties(user,userVo);
         result.setData(userVo);
+        
+        session.setAttribute(HazelcastSessionRepository.DEFAULT_SESSION_MAP_NAME,userVo);
         return result;
     }
 
